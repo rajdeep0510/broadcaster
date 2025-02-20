@@ -1,3 +1,8 @@
+
+
+
+
+
 <header class="bg-white shadow-md p-4">
         <div class="container mx-auto flex justify-between items-center">
             <div class="text-2xl font-bold text-blue-600">Broadcaster</div>
