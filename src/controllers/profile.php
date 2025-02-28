@@ -2,25 +2,41 @@
 require_once __DIR__ . '/../models/connection.php';
 require_once __DIR__ . '/../../config/config.ini.php';
 
-$username = $_SESSION['username'];
+// Get the username from the URL parameter
+$username = $_GET['user'] ?? null;
 
-try {
-    $sql = "select u_name, full_name, bio, email from accounts where u_name = :username";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(['username' => $username]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-} catch (PDOException $e) { 
-    echo "Query failed: " . $e->getMessage();
+if (!$username) {
+    echo "No username provided!";
+    exit;
 }
 
 try {
-    $sql = "select message, created_at, m_username from messages where m_username = :username";
+    // Fetch user details based on the username
+    $sql = "SELECT u_name, full_name, bio, email FROM accounts WHERE u_name = :username";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['username' => $username]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$user) {
+        echo "User not found!";
+        exit;
+    }
+} catch (PDOException $e) {
+    echo "Query failed: " . $e->getMessage();
+    exit;
+}
+
+try {
+    // Fetch messages of the user
+    $sql = "SELECT message, created_at, m_username FROM messages WHERE m_username = :username";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['username' => $username]);
     $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Query failed: " . $e->getMessage();
+    exit;
 }
 
+// Load profile view
 require 'src/views/profile.view.php';
-?> 
+?>

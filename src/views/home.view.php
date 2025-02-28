@@ -39,8 +39,10 @@
                     <div class="mb-4 p-4 border-b">
                         <p class="text-gray-800 text-2xl"><?php echo htmlspecialchars($message['message']); ?></p>
                         <?php if (isset($message['created_at'])): ?>
-                            <a href="/broadcast/profile/" class="text-sm text-gray-500 mt-2">
-                                Posted by @<?php echo htmlspecialchars($message['m_username']); ?>
+                            <a href="/broadcast/profile?user=<?php echo htmlspecialchars($message['m_username']); ?>" class="text-sm text-gray-500 mt-2">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-blue-500">@<?php echo htmlspecialchars($message['m_username']); ?></span>
+                                </div>
                             </a>
                             <p class="text-sm text-gray-500 mt-2">
                                 <?php echo date('F j, Y g:i a', strtotime($message['created_at'])); ?>                            

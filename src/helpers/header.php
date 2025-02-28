@@ -29,7 +29,7 @@
                     <a href="/broadcast/register/" class="text-blue-500 hover:text-blue-700 pt-3">Register</a>
                 <?php } else { ?>
                     <a href="/broadcast/logout/" class="text-blue-500 hover:text-blue-700 pt-3">Logout</a>
-                    <a href="/broadcast/profile/" class="bg-blue-600 hover:bg-blue-700 transition-colors">
+                    <a href="/broadcast/profile?user=<?php echo htmlspecialchars($_SESSION['username']); ?>" class="bg-blue-600 hover:bg-blue-700 transition-colors">
                         <div class="flex items-center space-x-2 p-3 rounded-full shadow-sm">
                             <span class="text-white font-medium">@<?php echo htmlspecialchars($_SESSION['username']); ?></span>
                         </div>
