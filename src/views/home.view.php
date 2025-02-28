@@ -7,19 +7,43 @@
     <link href="/broadcast/src/output.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
-    <!-- <a href="/broadcast/about/">About</a> -->
-    <!-- <a href="/broadcast/profile/">Profile</a> -->
     <?php include_once __DIR__ . '/../helpers/header.php'; ?>
     
     <main class="container mx-auto mt-8 p-4">
+        <?php if ($_SESSION['is_logged_in']): ?>
+            <!-- Message Form -->
+            <div class="bg-white rounded-lg shadow p-6 mb-8">
+                <form action="/broadcast/" method="POST" class="space-y-4">
+                    <div>
+                        <textarea 
+                            name="message" 
+                            placeholder="What's on your mind?" 
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+                            rows="3"
+                            required
+                        ></textarea>
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                            Post
+                        </button>
+                    </div>
+                </form>
+            </div>
+        <?php endif; ?>
+
+        <!-- Message Feed -->
         <div class="feed bg-white rounded-lg shadow p-6" id="messageFeed">
             <?php if ($messages): ?>
                 <?php foreach ($messages as $message): ?>
                     <div class="mb-4 p-4 border-b">
-                        <p class="text-gray-800"><?php echo htmlspecialchars($message['message']); ?></p>
+                        <p class="text-gray-800 text-2xl"><?php echo htmlspecialchars($message['message']); ?></p>
                         <?php if (isset($message['created_at'])): ?>
+                            <a href="/broadcast/profile/" class="text-sm text-gray-500 mt-2">
+                                Posted by @<?php echo htmlspecialchars($message['m_username']); ?>
+                            </a>
                             <p class="text-sm text-gray-500 mt-2">
-                                <?php echo date('F j, Y g:i a', strtotime($message['created_at'])); ?>
+                                <?php echo date('F j, Y g:i a', strtotime($message['created_at'])); ?>                            
                             </p>
                         <?php endif; ?>
                     </div>
@@ -30,13 +54,6 @@
         </div>
     </main>
 
-    <!-- Debug section (remove in production) -->
-    <?php if (isset($_ENV['DEBUG']) && $_ENV['DEBUG']): ?>
-        <div class="container mx-auto mt-8 p-4">
-            <pre class="bg-gray-100 p-4 rounded">
-                <?php print_r($messages); ?>
-            </pre>
-        </div>
-    <?php endif; ?>
+
 </body>
 </html>
