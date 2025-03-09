@@ -4,9 +4,23 @@
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link href="/broadcast/src/output.css" rel="stylesheet">
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    sans: ['Helvetica', 'Arial', 'sans-serif'],
+                },
+                spacing: {
+                    '128': '32rem',
+                }
+            }
+        }
+    }
+</script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-900 ">
     <?php include_once __DIR__ . '/../helpers/header.php'; ?>
     
     <main class="container mx-auto mt-8 p-4">
@@ -33,18 +47,18 @@
         <?php endif; ?>
 
         <!-- Message Feed -->
-        <div class="feed bg-white rounded-lg shadow p-6" id="messageFeed">
+        <div class="feed bg-gray-700 rounded-lg shadow p-6" id="messageFeed">
             <?php if ($messages): ?>
                 <?php foreach ($messages as $message): ?>
                     <div class="mb-4 p-4 border-b">
-                        <p class="text-gray-800 text-2xl"><?php echo htmlspecialchars($message['message']); ?></p>
+                        <p class="text-gray-800 text-2xl text-white"><?php echo htmlspecialchars($message['message']); ?></p>
                         <?php if (isset($message['created_at'])): ?>
                             <a href="/broadcast/profile?user=<?php echo htmlspecialchars($message['m_username']); ?>" class="text-sm text-gray-500 mt-2">
                                 <div class="flex items-center space-x-2">
                                     <span class="text-blue-500">@<?php echo htmlspecialchars($message['m_username']); ?></span>
                                 </div>
                             </a>
-                            <p class="text-sm text-gray-500 mt-2">
+                            <p class="text-sm text-white mt-2">
                                 <?php echo date('F j, Y g:i a', strtotime($message['created_at'])); ?>                            
                             </p>
                         <?php endif; ?>

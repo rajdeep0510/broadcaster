@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
-    <link href="/broadcast/src/output.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="flex items-center justify-center min-h-screen bg-custom-bg">
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-900 gap-8">
+    <div class="text-center space-y-4">
+        <h1 class="text-6xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-transparent bg-clip-text animate-pulse drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+            Welcome to Broadcaster
+        </h1>
+        <p class="text-gray-200 text-xl font-medium tracking-wide">Connect and share with the world</p>
+    </div>
+
     <div class="w-full max-w-sm bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-white/20">
+        
         <h2 class="text-2xl font-bold text-center text-gray-700">Login</h2>
 
         <?php if ($error): ?>

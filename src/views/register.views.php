@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Broadcast</title>
-    <link href="/broadcast/src/output.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class=" bg-custom-bg ">
+<body class="bg-gray-900 gap-8">
     <?php include_once __DIR__ . '/../helpers/header.php'; ?>
     <div class="flex items-center justify-center min-h-screen p-4">
    

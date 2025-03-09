@@ -44,6 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// Show the view last
+
 require_once __DIR__ . '/../views/register.views.php';
 ?>

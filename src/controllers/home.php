@@ -1,7 +1,7 @@
 <?php
 // Include the database connection
-include_once 'src/models/connection.php';
-include_once 'src/config/config.ini.php';
+include_once __DIR__ . '/../models/connection.php';
+include_once __DIR__ . '/../config/config.ini.php';
 
 
 // sending the message to the database
