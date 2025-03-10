@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['is_logged_in'] = 1;
 
             // Redirect 
-            header('Location: /broadcast/login/');
+            header('Location: /broadcaster/login/');
             exit;
         } catch (PDOException $e) {
             $error = "Database error: " . $e->getMessage();

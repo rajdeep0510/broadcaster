@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Broadcast</title>
+    <title>Register - Broadcaster</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-900 gap-8">
+<body class="bg-gray-800 gap-8">
     <?php include_once __DIR__ . '/../helpers/header.php'; ?>
+    
     <div class="flex items-center justify-center min-h-screen p-4">
    
     <div class="w-full max-w-2xl bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-white/20">
@@ -19,7 +20,7 @@
             </div>
         <?php endif; ?>
 
-        <form action="/broadcast/register/" method="POST" class="space-y-6">
+        <form action="/broadcaster/register/" method="POST" class="space-y-6">
             <!-- Two columns for username and full name -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -88,7 +89,7 @@
             <!-- Login Link -->
             <div class="text-center text-sm text-gray-600 mt-4">
                 Already have an account? 
-                <a href="/broadcast/login/" class="text-blue-600 hover:underline font-medium">
+                <a href="/broadcaster/login/" class="text-blue-600 hover:underline font-medium">
                     Login
                 </a>
             </div>

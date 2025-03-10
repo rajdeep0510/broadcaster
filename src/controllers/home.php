@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'message' => $message,
             'username' => $username
         ]);
-        header('Location: /broadcast/');
+        header('Location: /broadcaster/');
         exit;
     } catch (PDOException $e) {
         echo "Query failed: " . $e->getMessage();
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // fetching messages from the database
 try {
-    $sql = "SELECT id, message, m_username, created_at FROM messages ORDER BY created_at DESC;";
+    $sql = "SELECT id, message, m_username, created_at, liked_users FROM messages ORDER BY created_at DESC;";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();    
     $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);

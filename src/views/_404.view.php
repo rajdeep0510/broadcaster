@@ -9,6 +9,6 @@
 <body>
     <h1>404</h1>
     <p>Page not found</p>
-    <a href="/">Home</a>
+    <a href="/broadcaster/">Home</a>
 </body>
 </html>

@@ -24,7 +24,7 @@
             </div>
         <?php endif; ?>
 
-        <form action="/broadcast/login/" method="POST" class="mt-4">
+        <form action="/broadcaster/login/" method="POST" class="mt-4">
             <div>
                 <label class="block text-gray-600 text-sm">Username</label>
                 <input type="text" name="username" required 
@@ -49,7 +49,7 @@
             </button>
 
             <div class="text-center mt-4">
-                <a href="/broadcast/register/" class="text-sm text-white hover:underline">
+                <a href="/broadcaster/register/" class="text-sm text-white hover:underline">
                     Don't have an account? Register here
                 </a>
             </div>

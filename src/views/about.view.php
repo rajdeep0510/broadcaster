@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>about</h1>
-    <a href="/broadcast/">home</a>
+    <a href="/broadcaster/">home</a>
     <?php include_once __DIR__ . '/../helpers/header.php'; ?>
 </body>
 </html>

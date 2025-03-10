@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($user && $user['password'] === $password) { // In production, use password_verify()
             $_SESSION['is_logged_in'] = true;
             $_SESSION['username'] = $username;
-            header('Location: /broadcast/');
+            header('Location: /broadcaster/');
             exit;
         } else {
             $error = "Invalid username or password!";
