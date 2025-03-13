@@ -15,7 +15,9 @@ $routes = [
     '/broadcaster/register/' => 'src/controllers/register.php',
     '/broadcaster/register' => 'src/controllers/register.php',
     '/broadcaster/like' => 'src/controllers/like.php',
-    '/broadcaster/like/' => 'src/controllers/like.php'
+    '/broadcaster/like/' => 'src/controllers/like.php',
+    '/broadcaster/comments' => 'src/controllers/comments.php',
+    '/broadcaster/comments/' => 'src/controllers/comments.php'
 ];
 
 // Check for static routes
@@ -29,6 +31,13 @@ if (strpos($uri, '/broadcaster/profile') === 0) {
     require 'src/controllers/profile.php';
     exit;
 }
+
+// Handle individual message route
+if (strpos($uri, '/broadcaster/message') === 0) {
+    require 'src/controllers/comments.php';  // We'll use comments.php to handle message display
+    exit;
+}
+
 
 // If no match, return 404
 http_response_code(404);
