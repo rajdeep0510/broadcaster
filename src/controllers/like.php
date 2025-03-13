@@ -9,7 +9,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 if (!isset($_POST['message_id'])) {
-    header('Location: /broadcaster/');
+    header('Location: /broadcaster/comments?id=' . $message_id);
     exit;
 }
 
@@ -26,7 +26,7 @@ try {
     // Debug: Check if we got the message
     if (!$likes) {
         error_log("Message not found with ID: " . $message_id);
-        header('Location: /broadcaster/');
+        header('Location: /broadcaster/comments?id=' . $message_id);
         exit;
     }
 
@@ -58,7 +58,7 @@ try {
             error_log("Update successful");
         }
         
-        header('Location: /broadcaster/');
+        header('Location: /broadcaster/comments?id=' . $message_id);
         exit;
     }
     else {
@@ -86,7 +86,7 @@ try {
             error_log("Unlike update successful");
         }
         
-        header('Location: /broadcaster/');
+        header('Location: /broadcaster/comments?id=' . $message_id);
         exit;
     }
 }
@@ -94,7 +94,7 @@ catch (PDOException $e) {
     error_log("Database error: " . $e->getMessage());
     error_log("SQL State: " . $e->getCode());
     error_log("Error Info: " . print_r($e->errorInfo, true));
-    header('Location: /broadcaster/');
+    header('Location: /broadcaster/comments?id=' . $message_id);
     exit;
 }
 ?>

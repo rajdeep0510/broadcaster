@@ -24,22 +24,36 @@
             </div>
             <p class="text-2xl text-white mb-4"><?php echo htmlspecialchars($message['message']); ?></p>
             
-            <!-- Like button -->
-            <?php if ($_SESSION['is_logged_in']): ?>
-                <form action="/broadcaster/like/" method="POST" class="flex items-center">
-                    <input type="hidden" name="message_id" value="<?php echo $message['id']; ?>">
-                    <?php
-                    $likes = json_decode($message['liked_users'], true) ?? [];
-                    $hasLiked = in_array($_SESSION['username'], $likes);
-                    ?>
-                    <button type="submit" class="flex items-center space-x-1 px-3 py-1 rounded-full border border-pink-500 hover:bg-pink-500/10 transition-colors <?php echo $hasLiked ? 'bg-pink-500/10' : ''; ?>">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-500" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
-                        </svg>
-                        <span class="text-sm font-medium text-pink-500"><?php echo count($likes); ?></span>
-                    </button>
-                </form>
-            <?php endif; ?>
+           
+                                <!-- like button -->
+                                <?php if (!$_SESSION['is_logged_in']): ?>
+                                    <div class="flex items-center space-x-1 px-3 py-1 rounded-full border border-pink-500 hover:bg-pink-500/10 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-500" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                                        </svg>
+                                        <span class="text-sm font-medium text-pink-500">
+                                            <?php
+                                            $likes = json_decode($message['liked_users'], true) ?? [];
+                                            echo count($likes);
+                                            ?>
+                                        </span>
+                                    </div>
+                                <?php endif; ?>
+                                <?php if ($_SESSION['is_logged_in']): ?>
+                                    <form action="/broadcaster/like/" method="POST" class="flex items-center">
+                                        <input type="hidden" name="message_id" value="<?php echo $message['id']; ?>">
+                                        <?php
+                                        $likes = json_decode($message['liked_users'], true) ?? [];
+                                        $hasLiked = in_array($_SESSION['username'], $likes);
+                                        ?>
+                                        <button type="submit" class="flex items-center space-x-1 px-3 py-1 rounded-full border border-pink-500 hover:bg-pink-500/10 transition-colors <?php echo $hasLiked ? 'bg-pink-500/10' : ''; ?>">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-500" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                                            </svg>
+                                            <span class="text-sm font-medium text-pink-500"><?php echo count($likes); ?></span>
+                                        </button>
+                                    </form>
+                                <?php endif; ?>
         </div>
 
         <!-- Comments section -->
